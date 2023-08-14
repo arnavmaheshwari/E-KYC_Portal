@@ -1,0 +1,250 @@
+<p>create works!</p>
+<br />
+<button class="button" (click)="goToLogin()">Login</button>
+<br />
+<br />
+<button class="button" (click)="goToSearch()">Search KYC</button>
+<br />
+<br />
+<form #createForm="ngForm">
+    <div class="createParent">
+        <div class="input">
+            <span>Client Type </span>
+            <select id="clientType" [(ngModel)]="create.clientType" name="clientType" #clientType="ngModel" required>
+                <option value="IND">Individual</option>
+                <option value="LE">Legal/Corporate Entity</option>
+            </select>
+            <br />
+            <small class="error" *ngIf="clientType.touched && clientType.invalid">Select Client Type</small>
+        </div>
+        <div class="input" *ngIf="create.clientType=='IND'">
+            <span>Prefix </span>
+            <select id="prefix" [(ngModel)]="create.prefix" name="prefix" #prefix="ngModel" required>
+                <option value="MR">Mr.</option>
+                <option value="MRS">Mrs.</option>
+                <option value="DR">Dr.</option>
+            </select>
+            <br />
+            <small class="error" *ngIf="prefix.touched && prefix.invalid">Select Prefix</small>
+        </div>
+        <div class="input">
+            <span>First Name </span>
+            <input type="text" [(ngModel)]="create.firstName" minlength="3" name="firstName" #firstName="ngModel" required/>
+            <br />
+            <small class="error" *ngIf="firstName.touched && firstName.invalid">Enter First Name</small>
+        </div>
+        <div class="input" *ngIf="create.clientType=='IND'">
+            <span>Middle Name </span>
+            <input type="text" [(ngModel)]="create.middleName" minlength="1" name="middleName" #middleName="ngModel"/>
+        </div>
+        <div class="input" *ngIf="create.clientType=='IND'">
+            <span>Last Name </span>
+            <input type="text" [(ngModel)]="create.lastName" minlength="3" name="lastName" #lastName="ngModel" required/>
+            <br />
+            <small class="error" *ngIf="lastName.touched && lastName.invalid">Enter Last Name</small>
+        </div>
+        <div class="input" *ngIf="create.clientType=='IND'">
+            <span>Gender </span>
+            <select id="gender" [(ngModel)]="create.gender" name="gender" #gender="ngModel" required>
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+                <option value="T">Others</option>
+            </select>
+            <br />
+            <small class="error" *ngIf="gender.touched && gender.invalid">Select Gender</small>
+        </div>
+        <div class="input">
+            <span>DOB </span>
+            <input type="date" [(ngModel)]="create.dateofBirth" max="2004-12-31" step="1" name="dateofBirth" #dateofBirth="ngModel" required/>
+            <br />
+            <small class="error" *ngIf="dateofBirth.touched && dateofBirth.invalid">Select A Date Before 31/12/2004</small>
+        </div>
+        <div class="input" *ngIf="create.clientType=='IND'">
+            <span>Related Person Prefix </span>
+            <select id="relatedPersonPrefix" [(ngModel)]="create.relatedPersonPrefix" name="relatedPersonPrefix" #relatedPersonPrefix="ngModel" required>
+                <option value="MR">Mr.</option>
+                <option value="MRS">Mrs.</option>
+                <option value="DR">Dr.</option>
+            </select>
+            <br />
+            <small class="error" *ngIf="relatedPersonPrefix.touched && relatedPersonPrefix.invalid">Select A Prefix For Related Person</small>
+        </div>
+        <div class="input" *ngIf="create.clientType=='IND'">
+            <span>relatedPersonFirstName </span>
+            <input type="text" [(ngModel)]="create.relatedPersonFirstName" name="relatedPersonFirstName" #relatedPersonFirstName="ngModel" required/>
+            <br />
+            <small class="error" *ngIf="relatedPersonFirstName.touched && relatedPersonFirstName.invalid">Enter Related Person's First Name</small>
+        </div>
+        <div class="input" *ngIf="create.clientType=='IND'">
+            <span>relatedPersonMiddleName </span>
+            <input type="text" [(ngModel)]="create.relatedPersonMiddleName" name="relatedPersonMiddleName" #relatedPersonMiddleName="ngModel"/>
+        </div>
+        <div class="input" *ngIf="create.clientType=='IND'">
+            <span>relatedPersonLastName </span>
+            <input type="text" [(ngModel)]="create.relatedPersonLastName" name="relatedPersonLastName" #relatedPersonLastName="ngModel" required/>
+            <br />
+            <small class="error" *ngIf="relatedPersonLastName.touched && relatedPersonLastName.invalid">Enter Related Person's Last Name</small>
+        </div>
+        <div class="input" *ngIf="create.clientType=='IND'">
+            <span>relationshipType </span>
+            <select id="relationshipType" [(ngModel)]="create.relationshipType" name="relationshipType" #relationshipType="ngModel" required>
+                <option value="Father">Father</option>
+                <option value="Spouse">Spouse</option>
+                <option value="Mother">Mother</option>
+            </select>
+            <br />
+            <small class="error" *ngIf="relationshipType.touched && relationshipType.invalid">Select Realationship Type With Related Person</small>
+        </div>
+        <div class="input">
+        <span>mobileNumber </span>
+        <input type="tel" [(ngModel)]="create.mobileNumber" name="mobileNumber" pattern="[0-9]{10}" #mobileNumber="ngModel" required/>
+        <br />
+            <small class="error" *ngIf="mobileNumber.touched && mobileNumber.invalid">Enter 10-Digit Mobile Number</small>
+        </div>
+        <div class="input">
+        <span>emailAddress </span>
+        <input type="email" [(ngModel)]="create.emailAddress" pattern=".+@.+\..+" name="emailAddress" #emailAddress="ngModel" required/>
+        <br />
+        <small class="error" *ngIf="emailAddress.touched && emailAddress.invalid">Enter Valid E-Mail Address</small>
+        </div>
+        <div class="input">
+        <span>addressLine1 </span>
+        <input type="text" [(ngModel)]="create.addressLine1" name="addressLine1" #addressLine1="ngModel" required/>
+        <br />
+        <small class="error" *ngIf="addressLine1.touched && addressLine1.invalid">Enter Adress</small>
+        </div>
+        <div class="input">
+        <span>city </span>
+        <input type="text" [(ngModel)]="create.city" name="city" #city="ngModel" required/>
+        <br />
+        <small class="error" *ngIf="city.touched && city.invalid">Enter City</small>
+        </div>
+        <div class="input">
+        <span>district </span>
+        <input type="text" [(ngModel)]="create.district" name="district" #district="ngModel" required/>
+        <br />
+        <small class="error" *ngIf="district.touched && district.invalid">Enter District</small>
+        </div>
+        <div class="input">
+        <span>state </span>
+        <input type="text" [(ngModel)]="create.state" name="state" #state="ngModel" required/>
+        <br />
+        <small class="error" *ngIf="state.touched && state.invalid">Enter State</small>
+        </div>
+        <div class="input">
+        <span>country </span>
+        <input type="text" [(ngModel)]="create.country" name="country" #country="ngModel"required/>
+        <br />
+        <small class="error" *ngIf="country.touched && country.invalid">Enter Country</small>
+        </div>
+        <div class="input">
+        <span>pinCode </span>
+        <input type="number" [(ngModel)]="create.pinCode" name="pinCode" pattern="[0-9]{6}" #pinCode="ngModel" required/>
+        <br />
+        <small class="error" *ngIf="pinCode.touched && pinCode.invalid">Enter Valid Pin-Code</small>
+        </div>
+        <div class="input">
+        <span>correspondenceAddressLine1 </span>
+        <input type="text" [(ngModel)]="create.correspondenceAddressLine1" name="correspondenceAddressLine1" #correspondenceAddressLine1="ngModel" required/>
+        <br />
+        <small class="error" *ngIf="correspondenceAddressLine1.touched && correspondenceAddressLine1.invalid">Enter  Address</small>
+        </div>
+        <div class="input">
+        <span>correspondenceCity </span>
+        <input type="text" [(ngModel)]="create.correspondenceCity" name="correspondenceCity" #correspondenceCity="ngModel" required/>
+        <br />
+        <small class="error" *ngIf="correspondenceCity.touched && correspondenceCity.invalid">Enter Correspondence City</small>
+        </div>
+        <div class="input">
+        <span>correspondenceDistrict </span>
+        <input type="text" [(ngModel)]="create.correspondenceDistrict" name="correspondenceDistrict" #correspondenceDistrict="ngModel" required/>
+        <br />
+        <small class="error" *ngIf="correspondenceDistrict.touched && correspondenceDistrict.invalid">Enter Correspondence District</small>
+        </div>
+        <div class="input">
+        <span>correspondenceState </span>
+        <input type="text" [(ngModel)]="create.correspondenceState" name="correspondenceState" #correspondenceState="ngModel" required/>
+        <br />
+        <small class="error" *ngIf="correspondenceState.touched && correspondenceState.invalid">Enter Correspondence State</small>
+        </div>
+        <div class="input">
+        <span>correspondenceCountry </span>
+        <input type="text" [(ngModel)]="create.correspondenceCountry" name="correspondenceCountry" #correspondenceCountry="ngModel" required/>
+        <br />
+        <small class="error" *ngIf="correspondenceCountry.touched && correspondenceCountry.invalid">Enter Correspondence Country</small>
+        </div>
+        <div class="input">
+        <span>correspondencePinCode </span>
+        <input type="number" [(ngModel)]="create.correspondencePinCode" pattern="[0-9]{6}" name="correspondencePinCode" #correspondencePinCode="ngModel" required/>
+        <br />
+        <small class="error" *ngIf="correspondencePinCode.touched && correspondencePinCode.invalid">Enter Valid Correspondence Pin-Code</small>
+        </div>
+        <div class="input">
+            <span>kycDocuments </span>
+            <div class="kycDocuments">
+                <span>IDENTITY_PROOF</span>
+                <div class="kycDocument1">
+                    <span>ID Name</span>
+                    <select id="idName" [(ngModel)]="kycDocument1.idName" name="idName1" #idName1="ngModel" required>
+                        <option value="PAN">PAN</option>
+                        <option value="FORM60">FORM 60</option>
+                    </select>
+                    <br />
+                    <small class="error" *ngIf="idName1.touched && idName1.invalid">Select ID Name</small>
+                </div>
+                <div class="kycDocument1">
+                    <span>ID Number</span>
+                    <input type="text" [(ngModel)]="kycDocument1.idNumber" name="idNumber1" #idNumber1="ngModel" required/>
+                    <br />
+                    <small class="error" *ngIf="idNumber1.touched && idNumber1.invalid">Enter ID Number</small>
+                </div>
+                <input type="file" (change)="getFileDetails1($event)" accept=".pdf,.jpg,.jpeg,.tif,.tiff" required>
+            </div>
+            <div class="kycDocuments">
+                <span>ADDRESS_PROOF</span>
+                <div class="kycDocument2">
+                    <span>ID Name</span>
+                    <select id="idName" [(ngModel)]="kycDocument2.idName" name="idName2" #idName2="ngModel" required>
+                        <option value="PASSPORT" *ngIf="create.clientType=='IND'">PASSPORT</option>
+                        <option value="VOTERID" *ngIf="create.clientType=='IND'">VOTER ID</option>
+                        <option value="DL" *ngIf="create.clientType=='IND'">DRIVING LICENSE</option>
+                        <option value="AADHAR" *ngIf="create.clientType=='IND'">AADHAR CARD NUMBER</option>
+                        <option value="NREGA" *ngIf="create.clientType=='IND'">NREGA JOB CARD</option>
+                        <option value="NPRL" *ngIf="create.clientType=='IND'">NATIONAL POPULATION REGISTER LETTER</option>
+                        <option value="RC" *ngIf="create.clientType=='LE'">REGISTRATION CERTIFICATE</option>
+                        <option value="COI" *ngIf="create.clientType=='LE'">CERTIFICATE OF INCORPORATION/FORMATION</option>
+                        <option value="GSTIN" *ngIf="create.clientType=='LE'">GSTIN CERTIFICATE</option>
+                    </select>
+                    <br />
+                    <small class="error" *ngIf="idName2.touched && idName2.invalid">Select ID Name</small>
+                </div>
+                <div class="kycDocument2">
+                    <span>ID Number</span>
+                    <input type="text" [(ngModel)]="kycDocument2.idNumber" name="idNumber2" #idNumber2="ngModel" required/>
+                    <br />
+                    <small class="error" *ngIf="idNumber2.touched && idNumber2.invalid">Enter ID Number</small>
+                </div>
+                <input type="file" (change)="getFileDetails2($event)" accept=".pdf,.jpg,.jpeg,.tif,.tiff" required>
+            </div>
+            <div class="kycDocuments" *ngIf="create.clientType=='IND'">
+                <span>OTHERS</span>
+                <div class="kycDocument3">
+                    <span>ID Name</span>
+                    <select id="idName" [(ngModel)]="kycDocument3.idName" name="idName3" #idName3="ngModel" required>
+                        <option value="PHOTO" *ngIf="create.clientType=='IND'">PHOTOGRAPH</option>
+                    </select>
+                    <br />
+                    <small class="error" *ngIf="idName3.touched && idName3.invalid">Select ID Name</small>
+                </div>
+                <div class="kycDocument3">
+                    <span>ID Number</span>
+                    <input type="text" [(ngModel)]="kycDocument3.idNumber" name="idNumber3" #idNumber3="ngModel" required/>
+                    <br />
+                    <small class="error" *ngIf="idNumber3.touched && idNumber3.invalid">Enter ID Number</small>
+                </div>
+                <input type="file" (change)="getFileDetails3($event)" accept=".pdf,.jpg,.jpeg,.tif,.tiff" required>
+            </div>
+        </div>  
+        <button (click)="new()" [disabled]="createForm.invalid">Create</button>
+    </div>
+</form>

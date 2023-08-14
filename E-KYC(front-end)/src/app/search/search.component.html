@@ -1,0 +1,81 @@
+<p>search works!</p>
+<br />
+<button class="button" (click)="goToLogin()">Login</button>
+<br />
+<br />
+<button class="button" (click)="goToCreate()">Create KYC</button>
+<br />
+<br />
+<form #searchForm="ngForm">
+    <div class="searchParent">
+        <div class="input">
+            <span>Client Type </span>
+            <select id="clientType" [(ngModel)]="search.clientType" name="clientType" required #clientType="ngModel">
+                <option value="IND">Indivdual</option>
+                <option value="LE">Legal/Corporate Entity</option>
+            </select>
+            <br />
+            <small class="error" *ngIf="clientType.touched && clientType.invalid">Select A Client Type</small>
+        </div>
+        <div class="input">
+            <span>First Name </span>
+            <input type="text" [(ngModel)]="search.firstName" minlength="3" name="firstName" required #firstName="ngModel"/>
+            <br />
+            <small class="error" *ngIf="firstName.touched && firstName.invalid">Invalid First Name</small>
+        </div>
+        <div class="input" *ngIf="search.clientType == 'IND'">
+            <span >Middle Name </span>
+            <input  type="text" [(ngModel)]="search.middleName" name="middleName" #middleName="ngModel"/>
+            <br />
+            <small class="error" *ngIf="middleName.invalid">Invalid Middle Name</small>
+        </div>
+        <div class="input" *ngIf="search.clientType == 'IND'">
+            <span>Last Name </span>
+            <input type="text" [(ngModel)]="search.lastName" minlength="3" name="lastName" required #lastName="ngModel"/>
+            <br />
+            <small class="error" *ngIf="lastName.touched && lastName.invalid">Invalid Last Name</small>
+        </div>
+        <div class="input" *ngIf="search.clientType == 'IND'">
+            <span>Gender </span>
+            <select id="gender"[(ngModel)]="search.gender" name="gender" required #gender="ngModel">
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+                <option value="T">Others</option>
+            </select>
+            <br />
+            <small class="error" *ngIf="gender.touched && gender.invalid">Select Gender</small>
+        </div>
+        <div class="input">
+            <span>DOB </span>
+            <input type="date" [(ngModel)]="search.dateofBirth" name="dateofBirth" max="2004-12-31" step="1" required #dateofBirth="ngModel"/>
+            <br />
+            <small class="error" *ngIf="dateofBirth.touched && dateofBirth.invalid">Select A Date Before 31/312/2004</small>
+        </div>
+        <div class="input">
+            <span>idType </span>
+            <select id="idType" [(ngModel)]="search.idType" name="idType" required #idType="ngModel">
+                <option value="ITGI">ITGI UNIQUE IDENTIFIER</option>
+                <option value="CKYC">CKYC IDENTIFIER</option>
+                <option value="PAN">PAN</option>
+                <option value="PASSPORT" *ngIf="search.clientType == 'IND'">PASSPORT</option>
+                <option value="VOTERID" *ngIf="search.clientType == 'IND'">VOTER ID</option>
+                <option value="DL" *ngIf="search.clientType == 'IND'">DRIVING LICENSE</option>
+                <option value="AADHAR" *ngIf="search.clientType == 'IND'">AADHAR CARD NUMBER</option>
+                <option value="NREGA" *ngIf="search.clientType == 'IND'">NREGA JOB CARD</option>
+                <option value="NPRL" *ngIf="search.clientType == 'IND'">NATIONAL POPULATION REGISTER LETTER</option>
+                <option value="RC" *ngIf="search.clientType == 'LE'">REGISTRATION CERTIFICATE</option>
+                <option value="COI" *ngIf="search.clientType == 'LE'">CERTIFICATE OF INCORPORATION/FORMATION</option>
+                <option value="GSTIN" *ngIf="search.clientType == 'LE'">GSTIN CERTIFICATE</option>
+            </select>
+            <br />
+            <small class="error" *ngIf="idType.touched && idType.invalid">Select An ID Type</small>
+        </div>
+        <div class="input">
+            <span>idNumber </span>
+            <input type="text" [(ngModel)]="search.idNumber" name="idNumber" required #idNumber="ngModel" maxlength="20"/>
+            <br />
+            <small class="error" *ngIf="idNumber.touched && idNumber.invalid">Invalid ID Number</small>
+        </div>
+        <button (click)="fetch()" [disabled]=searchForm.invalid>Find/Search</button>
+    </div>
+    </form>

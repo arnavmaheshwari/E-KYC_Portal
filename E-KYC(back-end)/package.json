@@ -1,0 +1,16 @@
+{
+  "name": "E-KYC(back-end)",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "nodemon": "^3.0.1",
+    "pg-promise": "^11.5.3"
+  },
+  "scripts": {
+	"start": "nodemon index.js"
+}
+}

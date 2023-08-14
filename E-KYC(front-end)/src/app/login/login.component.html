@@ -1,0 +1,20 @@
+<form #loginForm="ngForm">
+    <div class="loginParent">
+        <div class="input">
+        <br />    
+        <span>User Id </span>
+        <input type="email" pattern=".+@iffcotokio\.co\.in" [(ngModel)]="login.userId" name="userId" required #userId="ngModel" />
+        <br />
+        <small class="error" *ngIf="userId.touched && userId.invalid">Invalid User ID</small>
+        </div>
+    
+        <div class="input">
+        <br />
+        <span>Password </span>
+        <input type="password" [(ngModel)]="login.password" name="password" required #password="ngModel" />
+        <br />
+        <small class="error" *ngIf="password.touched && password.invalid">Invalid Password</small>
+        </div>
+        <button class="button" (click)="log()" [disabled]=loginForm.invalid>Login</button>
+    </div>
+</form>
