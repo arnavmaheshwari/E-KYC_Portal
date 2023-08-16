@@ -25,34 +25,66 @@ app.use(express.json())
 //     })
 // })
 
-app.post("/data", (request, response)=>{
+// app.post("/data", (request, response)=>{
+//     db.any(
+//         "INSERT INTO users (userid, password) values($1,$2)",
+//         [request.body.userId,request.body.password]
+//     )
+//     .then((result)=>{
+//         //console.log(result) : To check output
+//         response.send('LOGIN Created')
+//     })
+//     .catch((error)=>{
+//         //console.log(error): To check output   
+//         response.send(error)
+//     })
+// })
+
+app.post("/logged", (request, response)=>{
     db.any(
-        "insert into users (userId, password) values($1,$2)",
+        "select COUNT(*) from users where user_id=$1 and password=$2",
         [request.body.userId,request.body.password]
     )
     .then((result)=>{
-        //console.log(result) : To check output
-        response.send('LOGIN Created')
+        console.log(result)
+        response.status(200).send(result)
     })
     .catch((error)=>{
-        //console.log(error): To check output   
-        response.send(error)
+        response.status(400).send(error)
     })
-})
-
-app.post("/logged", (request, response)=>{
-    console.log(request.body);
-    response.status(200).send("Logged In:)")
 })
 
 app.post("/searched", (request, response)=>{
-    console.log(request.body);
-    response.status(200).send("Searched:)")
+    db.any(
+        "select client.itgi_unique_identifier from client_kyc as client, kyc_documents as kyc where client.client_type=$1 and client.first_name=$2 and client.date_of_birth=$3 and kyc.id_name=$4 and kyc.id_number=$5",
+        [request.body.clientType,request.body.firstName,request.body.dateofBirth,request.body.idType,request.body.idNumber]
+    )
+    .then((result)=>{
+        console.log(result)
+        response.status(200).send(result)
+    })
+    .catch((error)=>{
+        response.status(400).send(error)
+    })
 })
 
 app.post("/created", (request, response)=>{
     console.log(request.body);
     response.status(200).send("Created:)")
 })
+
+
+// Random string generated here so that uniqueness can be checked, plus when front-end changes, still the back-end remains, so string can be generated uniquely
+
+const generateRandomString = ()=>{
+    const chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    const randomArray = Array.from(
+        { length: 14 },
+        (v, k) => chars[Math.floor(Math.random() * chars.length)]
+      );
+    
+      const randomString = randomArray.join("");
+      return randomString;
+    };
 
 app.listen(process.env.PORT, ()=>(console.log("Server Running At http://localhost:"+process.env.PORT))) 

@@ -45,7 +45,8 @@ export class CreateComponent {
   goToSearch() {
     this.router.navigate(['/search']);
   }
-  goToLogin() {
+  Logout() {
+    localStorage.setItem("isLoggedIn","False");
     this.router.navigate(['']);
   }
 

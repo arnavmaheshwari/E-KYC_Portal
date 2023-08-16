@@ -17,14 +17,21 @@ export class SearchComponent {
   fetch() {
     console.log(this.search);
     this.searchService.search(this.search).subscribe((data:any)=>{
-      console.log(data);
+      // console.log(data);
+      if(data.status===200){
+        window.alert(data)
+      }
+      else{
+        window.alert("Not A Registered User!")
+      }
     })
   }
 
   goToCreate() {
     this.router.navigate(['/create']);
   }
-  goToLogin() {
+  Logout() {
+    localStorage.setItem("isLoggedIn","False");
     this.router.navigate(['']);
   }
 }

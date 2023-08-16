@@ -8,33 +8,41 @@ import { LoginService } from '../login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent{
 
-  data: any[] = [];
+  // implements OnInit 
+
+
+  // data: any = '';
 
   constructor(private router : Router,
     private loginService: LoginService){}
 
   login: Login = new Login("","");
 
-  ngOnInit(): void {
+  // ngOnInit(): void {
     
-    this.loginService.getData().subscribe((responeData)=>{
-      this.data = responeData;
-    },
-    (error)=>{
-      console.error("Error fetching data: ",error);
-    }
-    );
-  }
+  //   this.loginService.getData().subscribe((responeData)=>{
+  //     this.data = responeData;
+  //   },
+  //   (error)=>{
+  //     console.error("Error fetching data: ",error);
+  //   }
+  //   );
+  // }
 
   log(){
-    // console.log(this.login);
-    // this.loginService.login(this.login).subscribe((data:any)=>{
-    //   console.log(data);
-    // })
-    console.log(this.data[0].password);
-    this.router.navigate(['/search']);
+    console.log(this.login);
+    this.loginService.login(this.login).subscribe((data:any)=>{
+      console.log(data[0].count)
+      if(data[0].count==1){
+        localStorage.setItem("isLoggedIn","True");
+        this.router.navigate(['/search']);
+      }
+      else{
+        window.alert("Not A Registered User!")
+      }
+    })
     
   }
   
