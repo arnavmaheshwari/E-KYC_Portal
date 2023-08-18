@@ -6,6 +6,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class SearchService {
 
+  private baseUrl = 'http://localhost:3535/searched';
+
   constructor(private http: HttpClient) { }
 
   search(data:any){
@@ -14,6 +16,7 @@ export class SearchService {
       headers: new HttpHeaders(headers)
     }
   
-    return this.http.post('http://localhost:3535/searched',data,Option);
+    return this.http.post(`${this.baseUrl}`,data,Option)
+    // return this.http.post('http://localhost:3535/searched',data,Option);
   }
 }

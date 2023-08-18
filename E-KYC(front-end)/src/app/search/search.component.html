@@ -79,3 +79,37 @@
         <button (click)="fetch()" [disabled]=searchForm.invalid>Find/Search</button>
     </div>
     </form>
+
+<div *ngIf="display=='success'">
+    Record Found!!!
+    Client Type: {{result.clientType}}
+    Prefix: {{result.prefix}}
+    First Name: {{result.firstName}}
+    Middle Name: {{result.middleName}}
+    Last Name: {{result.lastName}}
+    Gender: {{result.gender}}
+    Date of Birth: {{result.dateofBirth}}
+    Related Person Prefix: {{result.relatedPersonPrefix}}
+    Related Person First Name: {{result.relatedPersonFirstName}}
+    Related Person Middle Name: {{result.relatedPersonMiddleName}}
+    Related Person Last Name: {{result.relatedPersonLastName}}
+    Relationship Type: {{result.relationshipType}}
+    Mobile Number: {{result.mobileNumber}}
+    Email ID: {{result.emailAddress}}
+    Address Line 1: {{result.addressLine1}}
+    City: {{result.city}}
+    District: {{result.district}}
+    State: {{result.state}}
+    Country: {{result.country}}
+    Pincode: {{result.pinCode}}
+    Correspondence Address Line 1: {{result.correspondenceAddressLine1}}
+    Correspondence City: {{result.correspondenceCity}}
+    Correspondence District: {{result.correspondenceDistrict}}
+    Correspondence State: {{result.correspondenceState}}
+    Correspondence Country: {{result.correspondenceCountry}}
+    Correspondence Pin-Code: {{result.correspondencePinCode}}
+    ID Type: {{result.idType}}
+    ID Name: {{result.idName}}
+    ID Number: {{result.idNumber}}
+    ITGI Unique Reference ID: {{result.ITGI_UniqueIdentifier}}
+</div>

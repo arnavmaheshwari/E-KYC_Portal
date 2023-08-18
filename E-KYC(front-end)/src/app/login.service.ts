@@ -7,13 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class LoginService {
 
-  // private baseUrl = 'http://localhost:3535/data';
+   private baseUrl = 'http://localhost:3535/logged';
 
   constructor(private http: HttpClient) { }
-
-  // getData(): Observable<any[]> {
-  //   return this.http.get<any[]>(`${this.baseUrl}`);
-  // }
 
   login(data:any){
     const headers = { 'content-type': 'application/json'};
@@ -21,6 +17,9 @@ export class LoginService {
       headers: new HttpHeaders(headers)
     }  
     
-    return this.http.post('http://localhost:3535/logged',data,Option);
+    return this.http.post(`${this.baseUrl}`,data,Option)
+    // return this.http.post('http://localhost:3535/logged',data,Option);
   }
 }
+
+//We generally make different functions in the same service.ts file to navigate to different routes, rather than creating different services.ts files

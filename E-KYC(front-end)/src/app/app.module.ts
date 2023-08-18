@@ -11,8 +11,6 @@ import { CreateComponent } from './create/create.component';
 import { UploadsModule } from '@progress/kendo-angular-upload';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,4 +29,5 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   providers: [SearchService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

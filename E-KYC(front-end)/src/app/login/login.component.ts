@@ -10,29 +10,16 @@ import { LoginService } from '../login.service';
 })
 export class LoginComponent{
 
-  // implements OnInit 
-
-
-  // data: any = '';
-
   constructor(private router : Router,
     private loginService: LoginService){}
 
   login: Login = new Login("","");
 
-  // ngOnInit(): void {
-    
-  //   this.loginService.getData().subscribe((responeData)=>{
-  //     this.data = responeData;
-  //   },
-  //   (error)=>{
-  //     console.error("Error fetching data: ",error);
-  //   }
-  //   );
-  // }
+  ngOnInit(): void {
+    localStorage.setItem("isLoggedIn","False");
+  }
 
   log(){
-    console.log(this.login);
     this.loginService.login(this.login).subscribe((data:any)=>{
       console.log(data[0].count)
       if(data[0].count==1){
