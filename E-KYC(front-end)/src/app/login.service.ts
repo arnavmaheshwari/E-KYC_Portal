@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class LoginService {
 
-   private baseUrl = 'http://localhost:3535/logged';
+   private baseUrl = 'http://localhost:3535/log_in';
 
   constructor(private http: HttpClient) { }
 
@@ -22,4 +22,6 @@ export class LoginService {
   }
 }
 
+// ng g s login: This command will generate a login service in the login folder.
 //We generally make different functions in the same service.ts file to navigate to different routes, rather than creating different services.ts files
+

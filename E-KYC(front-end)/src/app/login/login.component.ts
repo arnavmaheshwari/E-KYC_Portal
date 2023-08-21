@@ -13,24 +13,26 @@ export class LoginComponent{
   constructor(private router : Router,
     private loginService: LoginService){}
 
+  // object: class = new class(); 
   login: Login = new Login("","");
 
   ngOnInit(): void {
     localStorage.setItem("isLoggedIn","False");
   }
 
+  alert: string= "success";
+
   log(){
     this.loginService.login(this.login).subscribe((data:any)=>{
-      console.log(data[0].count)
       if(data[0].count==1){
         localStorage.setItem("isLoggedIn","True");
         this.router.navigate(['/search']);
       }
       else{
-        window.alert("Not A Registered User!")
+        this.alert = "danger";
       }
-    })
-    
+    }) 
   }
-  
 }
+
+// ng g c login: This command will generate a login component in the login folder.

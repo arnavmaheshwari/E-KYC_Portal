@@ -1,0 +1,17 @@
+.loginParent {
+    border-radius: 10px;
+    border:1px solid #dfdfdf;
+    width:400px;
+    min-height: 200px;
+    height: auto;
+    margin: 100px auto; 
+    padding:50px;
+    background-color: #fff
+}
+
+.input{ text-align:center;}
+
+.input.final{ text-align:center; margin-top:10px;}
+
+
+.input i { font-size: 20px;}

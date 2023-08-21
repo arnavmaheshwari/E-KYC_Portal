@@ -1,11 +1,17 @@
-<p>create works!</p>
-<br />
-<button class="button" (click)="Logout()">Logout</button>
-<br />
-<br />
-<button class="button" (click)="goToSearch()">Search KYC</button>
-<br />
-<br />
+<nav class="navbar" style="background-color: #3988ffab;">
+    <div class="container-fluid">
+        <div class="col-md-6">
+      <a class="navbar-brand" href="#">
+        <img src="https://www.iffcotokio.co.in/content/dam/iffcotokio/iffco-images/iffco-tokio-logo-english.svg" alt="Logo" width="100" height="50" class="d-inline-block align-text-top">
+        Create KYC
+      </a>
+    </div>
+    <div class="col-md-6" style="text-align: right;">
+      <button type="button" class="btn btn-primary" (click)="goToSearch()">Search KYC</button>
+      <button type="button" class="btn btn-danger" (click)="Logout()">Logout</button>
+    </div>
+    </div>
+  </nav>
 <form #createForm="ngForm">
     <div class="createParent">
         <div class="input">
@@ -29,7 +35,7 @@
         </div>
         <div class="input">
             <span>First Name </span>
-            <input type="text" [(ngModel)]="create.firstName" minlength="3" name="firstName" #firstName="ngModel" required/>
+            <input type="text" [(ngModel)]="create.firstName" minlength="2" name="firstName" #firstName="ngModel" required/>
             <br />
             <small class="error" *ngIf="firstName.touched && firstName.invalid">Enter First Name</small>
         </div>
@@ -39,7 +45,7 @@
         </div>
         <div class="input" *ngIf="create.clientType=='IND'">
             <span>Last Name </span>
-            <input type="text" [(ngModel)]="create.lastName" minlength="3" name="lastName" #lastName="ngModel" required/>
+            <input type="text" [(ngModel)]="create.lastName" minlength="2" name="lastName" #lastName="ngModel" required/>
             <br />
             <small class="error" *ngIf="lastName.touched && lastName.invalid">Enter Last Name</small>
         </div>
@@ -245,7 +251,9 @@
                 <input type="file" (change)="getFileDetails3($event)" accept=".pdf,.jpg,.jpeg,.tif,.tiff" required>
             </div>
         </div>  
-        <button (click)="new()" [disabled]="createForm.invalid">Create</button>
+        <div class="input final">
+        <button type="button" class="btn btn-success" (click)="new()" [disabled]="createForm.invalid">Create</button>
+        </div>
     </div>
 </form>
 
@@ -281,4 +289,8 @@
     ID Name: {{result.idName}}
     ID Number: {{result.idNumber}}
     ITGI Unique Reference ID: {{result.ITGI_UniqueIdentifier}}
+</div>
+
+<div *ngIf="display=='created'">
+    Record Created!!!
 </div>

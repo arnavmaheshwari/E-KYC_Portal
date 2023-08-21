@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class CreateService {
 
-  private baseUrl = 'http://localhost:3535/created';
+  private baseUrl = 'http://localhost:3535/kyc/create_kyc';
 
   constructor(private http: HttpClient) { }
   

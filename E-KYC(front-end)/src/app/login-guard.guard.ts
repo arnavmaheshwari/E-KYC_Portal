@@ -8,5 +8,5 @@ export const loginGuardGuard: CanActivateFn = (route, state) => {
   }
   else{
     return router.parseUrl('');
-}
+  }
 };

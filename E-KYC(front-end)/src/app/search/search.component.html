@@ -1,11 +1,17 @@
-<p>search works!</p>
-<br />
-<button class="button" (click)="Logout()">Logout</button>
-<br />
-<br />
-<button class="button" (click)="goToCreate()">Create KYC</button>
-<br />
-<br />
+<nav class="navbar" style="background-color: #3988ffab;">
+    <div class="container-fluid">
+        <div class="col-md-6">      
+        <a class="navbar-brand" href="#">
+        <img src="https://www.iffcotokio.co.in/content/dam/iffcotokio/iffco-images/iffco-tokio-logo-english.svg" alt="Logo" width="100" height="50" class="d-inline-block align-text-top">
+        Search KYC
+      </a>
+    </div>
+      <div class="col-md-6" style="text-align: right;">
+      <button type="button" class="btn btn-primary" (click)="goToCreate()">Create KYC</button>
+      <button type="button" class="btn btn-danger"  (click)="Logout()">Logout</button>
+    </div>
+    </div>
+  </nav>
 <form #searchForm="ngForm">
     <div class="searchParent">
         <div class="input">
@@ -19,19 +25,19 @@
         </div>
         <div class="input">
             <span>First Name </span>
-            <input type="text" [(ngModel)]="search.firstName" minlength="3" name="firstName" required #firstName="ngModel"/>
+            <input type="text" [(ngModel)]="search.firstName" minlength="2" name="firstName" required #firstName="ngModel"/>
             <br />
             <small class="error" *ngIf="firstName.touched && firstName.invalid">Invalid First Name</small>
         </div>
         <div class="input" *ngIf="search.clientType == 'IND'">
             <span >Middle Name </span>
-            <input  type="text" [(ngModel)]="search.middleName" name="middleName" #middleName="ngModel"/>
+            <input  type="text" [(ngModel)]="search.middleName" minlength="1" name="middleName" #middleName="ngModel"/>
             <br />
             <small class="error" *ngIf="middleName.invalid">Invalid Middle Name</small>
         </div>
         <div class="input" *ngIf="search.clientType == 'IND'">
             <span>Last Name </span>
-            <input type="text" [(ngModel)]="search.lastName" minlength="3" name="lastName" required #lastName="ngModel"/>
+            <input type="text" [(ngModel)]="search.lastName" minlength="2" name="lastName" required #lastName="ngModel"/>
             <br />
             <small class="error" *ngIf="lastName.touched && lastName.invalid">Invalid Last Name</small>
         </div>
@@ -76,7 +82,9 @@
             <br />
             <small class="error" *ngIf="idNumber.touched && idNumber.invalid">Invalid ID Number</small>
         </div>
-        <button (click)="fetch()" [disabled]=searchForm.invalid>Find/Search</button>
+        <div class="input final">
+        <button type="button" class="btn btn-success" (click)="fetch()" [disabled]=searchForm.invalid>Find/Search</button>
+        </div>
     </div>
     </form>
 

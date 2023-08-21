@@ -31,7 +31,7 @@ export class CreateComponent {
 
   possible: string = "";
   lengthOfCode: number = 0;
-  display: string = "";
+  display: string = "Failure";
 
 
   new() {
@@ -87,7 +87,8 @@ export class CreateComponent {
           if(data.status==200){
             this.documentService.documents(this.create.kycDocument).subscribe((data:any)=>{
               if(data.status==200){
-                window.alert("Data Inserted Successfully!")
+                this.display="created"
+                window.alert("Data Inserted Successfully! ITGI Unique Reference ID Generated: "+ data.resu[0].itgi_unique_identifier)
                 }
             else{
               window.alert("Input Data Correctly!")

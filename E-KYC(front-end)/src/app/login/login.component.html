@@ -1,19 +1,35 @@
+<!-- ngForm is used to validate the form, like to use .invalid function -->
+<nav class="navbar" style="background-color: #3988ffab;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="https://www.iffcotokio.co.in/content/dam/iffcotokio/iffco-images/iffco-tokio-logo-english.svg" alt="Logo" width="100" height="50" class="d-inline-block align-text-top">
+        KYC Portal
+      </a>
+    </div>
+  </nav>
 <form #loginForm="ngForm">
+    <div class="alert alert-danger" role="alert" *ngIf="alert=='danger'">
+        Not A Registered User!
+      </div>
     <div class="loginParent">
         <div class="input">
         <br />    
-        <span>User Id </span>
-        <input type="email" pattern=".+@iffcotokio\.co\.in" [(ngModel)]="login.userId" name="userId" required #userId="ngModel" />
+        <!-- <span>User Id </span> -->
+        <i class="bi bi-person"></i>
+        <input type="email" placeholder="User ID" pattern=".+@iffcotokio\.co\.in" [(ngModel)]="login.userId" name="userId" class="inputbox" required #userId="ngModel" />
         <br />
         <small class="error" *ngIf="userId.touched && userId.invalid">Invalid User ID</small>
         </div>
         <div class="input">
         <br />
-        <span>Password </span>
-        <input type="password" [(ngModel)]="login.password" name="password" required #password="ngModel" />
+        <!-- <span>Password </span> -->
+        <i class="bi bi-lock"></i>
+        <input type="password" placeholder="Password" [(ngModel)]="login.password" name="password" required #password="ngModel" />
         <br />
         <small class="error" *ngIf="password.touched && password.invalid">Invalid Password</small>
         </div>
-        <button class="button" (click)="log()" [disabled]=loginForm.invalid>Login</button>
+        <div class="input final">
+        <button type="button" class="btn btn-primary" (click)="log()" [disabled]=loginForm.invalid>Login</button>
+        </div>
     </div>
 </form>

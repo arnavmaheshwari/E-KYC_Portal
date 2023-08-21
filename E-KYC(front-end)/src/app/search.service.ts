@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class SearchService {
 
-  private baseUrl = 'http://localhost:3535/searched';
+  private baseUrl = 'http://localhost:3535/kyc/search_kyc';
 
   constructor(private http: HttpClient) { }
 

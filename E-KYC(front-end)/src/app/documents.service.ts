@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class DocumentsService {
 
-  private baseUrl = 'http://localhost:3535/documents';
+  private baseUrl = 'http://localhost:3535/kyc/upload_documents';
 
   constructor(private http: HttpClient) { }
   
