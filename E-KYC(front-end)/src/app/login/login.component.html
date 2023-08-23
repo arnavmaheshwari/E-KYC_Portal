@@ -1,17 +1,18 @@
 <!-- ngForm is used to validate the form, like to use .invalid function -->
-<nav class="navbar" style="background-color: #3988ffab;">
+<nav class="navbar" style="background-color: #3988ffab; margin-bottom: 10px;">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="https://www.iffcotokio.co.in/">
         <img src="https://www.iffcotokio.co.in/content/dam/iffcotokio/iffco-images/iffco-tokio-logo-english.svg" alt="Logo" width="100" height="50" class="d-inline-block align-text-top">
-        KYC Portal
+        <u class="headerText">KYC Portal</u>
       </a>
     </div>
   </nav>
 <form #loginForm="ngForm">
     <div class="alert alert-danger" role="alert" *ngIf="alert=='danger'">
-        Not A Registered User!
+        Invalid Credentials!
       </div>
     <div class="loginParent">
+      <span class="formHeader">User Sign-In</span>
         <div class="input">
         <br />    
         <!-- <span>User Id </span> -->
@@ -24,12 +25,12 @@
         <br />
         <!-- <span>Password </span> -->
         <i class="bi bi-lock"></i>
-        <input type="password" placeholder="Password" [(ngModel)]="login.password" name="password" required #password="ngModel" />
+        <input type="password" placeholder="Password" [(ngModel)]="login.password" name="password" class="inputbox" required #password="ngModel" />
         <br />
         <small class="error" *ngIf="password.touched && password.invalid">Invalid Password</small>
         </div>
         <div class="input final">
-        <button type="button" class="btn btn-primary" (click)="log()" [disabled]=loginForm.invalid>Login</button>
+        <button type="button" class="btn btn-success" (click)="log()" [disabled]=loginForm.invalid>Login</button>
         </div>
     </div>
 </form>

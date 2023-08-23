@@ -32,7 +32,7 @@ export class CreateComponent {
   possible: string = "";
   lengthOfCode: number = 0;
   display: string = "Failure";
-
+  alert: string = "success";
 
   new() {
     this.create.kycDocument.push(this.kycDocument1);
@@ -91,18 +91,16 @@ export class CreateComponent {
                 window.alert("Data Inserted Successfully! ITGI Unique Reference ID Generated: "+ data.resu[0].itgi_unique_identifier)
                 }
             else{
-              window.alert("Input Data Correctly!")
+              this.alert = "danger";
               }
               })
             }
         else{
-          window.alert("Error Exists!")
+          this.alert = "danger";
       }
       })
       }
     })
-    
-
 }
 
   goToSearch() {

@@ -1,9 +1,9 @@
-<nav class="navbar" style="background-color: #3988ffab;">
+<nav class="navbar" style="background-color: #3988ffab; margin-bottom: 10px;">
     <div class="container-fluid">
         <div class="col-md-6">      
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="https://www.iffcotokio.co.in/">
         <img src="https://www.iffcotokio.co.in/content/dam/iffcotokio/iffco-images/iffco-tokio-logo-english.svg" alt="Logo" width="100" height="50" class="d-inline-block align-text-top">
-        Search KYC
+        <u class="headerText">Search KYC</u>
       </a>
     </div>
       <div class="col-md-6" style="text-align: right;">
@@ -13,10 +13,15 @@
     </div>
   </nav>
 <form #searchForm="ngForm">
+    <div class="alert alert-danger" role="alert" *ngIf="alert=='danger'">
+        KYC Record Does Not Exist!
+      </div>
     <div class="searchParent">
+        <span class="formHeader">Search KYC</span>
         <div class="input">
-            <span>Client Type </span>
-            <select id="clientType" [(ngModel)]="search.clientType" name="clientType" required #clientType="ngModel">
+            <span class="text">Client Type </span>
+            <select id="clientType" [(ngModel)]="search.clientType" name="clientType" class="inputbox" required #clientType="ngModel">
+                <option value="" disabled selected hidden>---Client Type---</option>
                 <option value="IND">Indivdual</option>
                 <option value="LE">Legal/Corporate Entity</option>
             </select>
@@ -24,26 +29,27 @@
             <small class="error" *ngIf="clientType.touched && clientType.invalid">Select A Client Type</small>
         </div>
         <div class="input">
-            <span>First Name </span>
-            <input type="text" [(ngModel)]="search.firstName" minlength="2" name="firstName" required #firstName="ngModel"/>
+            <span class="text">First Name </span>
+            <input type="text" placeholder="First Name" [(ngModel)]="search.firstName" minlength="2" class="inputbox" name="firstName" required #firstName="ngModel"/>
             <br />
             <small class="error" *ngIf="firstName.touched && firstName.invalid">Invalid First Name</small>
         </div>
         <div class="input" *ngIf="search.clientType == 'IND'">
-            <span >Middle Name </span>
-            <input  type="text" [(ngModel)]="search.middleName" minlength="1" name="middleName" #middleName="ngModel"/>
+            <span class="text">Middle Name </span>
+            <input  type="text" placeholder="Middle Name" [(ngModel)]="search.middleName" minlength="1" class="inputbox" name="middleName" #middleName="ngModel"/>
             <br />
             <small class="error" *ngIf="middleName.invalid">Invalid Middle Name</small>
         </div>
         <div class="input" *ngIf="search.clientType == 'IND'">
-            <span>Last Name </span>
-            <input type="text" [(ngModel)]="search.lastName" minlength="2" name="lastName" required #lastName="ngModel"/>
+            <span class="text">Last Name </span>
+            <input type="text" [(ngModel)]="search.lastName" placeholder="Last Name" minlength="2" class="inputbox" name="lastName" required #lastName="ngModel"/>
             <br />
             <small class="error" *ngIf="lastName.touched && lastName.invalid">Invalid Last Name</small>
         </div>
         <div class="input" *ngIf="search.clientType == 'IND'">
-            <span>Gender </span>
-            <select id="gender"[(ngModel)]="search.gender" name="gender" required #gender="ngModel">
+            <span class="text">Gender </span>
+            <select id="gender"[(ngModel)]="search.gender" name="gender" required class="inputbox" #gender="ngModel">
+                <option value="" disabled selected hidden>---Gender---</option>
                 <option value="M">Male</option>
                 <option value="F">Female</option>
                 <option value="T">Others</option>
@@ -52,14 +58,15 @@
             <small class="error" *ngIf="gender.touched && gender.invalid">Select Gender</small>
         </div>
         <div class="input">
-            <span>DOB </span>
-            <input type="date" [(ngModel)]="search.dateofBirth" name="dateofBirth" max="2004-12-31" step="1" required #dateofBirth="ngModel"/>
+            <span class="text">DOB </span>
+            <input type="date" [(ngModel)]="search.dateofBirth" placeholder="Date Of Birth" class="inputbox" name="dateofBirth" max="2004-12-31" step="1" required #dateofBirth="ngModel"/>
             <br />
             <small class="error" *ngIf="dateofBirth.touched && dateofBirth.invalid">Select A Date Before 31/312/2004</small>
         </div>
         <div class="input">
-            <span>idType </span>
-            <select id="idType" [(ngModel)]="search.idType" name="idType" required #idType="ngModel">
+            <span class="text">ID Type </span>
+            <select id="idType" [(ngModel)]="search.idType" name="idType" required class="inputbox" #idType="ngModel">
+                <option value="" disabled selected hidden>---ID Type---</option>
                 <option value="ITGI">ITGI UNIQUE IDENTIFIER</option>
                 <option value="CKYC">CKYC IDENTIFIER</option>
                 <option value="PAN">PAN</option>
@@ -77,8 +84,8 @@
             <small class="error" *ngIf="idType.touched && idType.invalid">Select An ID Type</small>
         </div>
         <div class="input">
-            <span>idNumber </span>
-            <input type="text" [(ngModel)]="search.idNumber" name="idNumber" required #idNumber="ngModel" maxlength="20"/>
+            <span class="text">ID Number </span>
+            <input type="text" [(ngModel)]="search.idNumber" placeholder="ID Number" name="idNumber" class="inputbox" required #idNumber="ngModel" maxlength="20"/>
             <br />
             <small class="error" *ngIf="idNumber.touched && idNumber.invalid">Invalid ID Number</small>
         </div>

@@ -1,18 +1,71 @@
 .searchParent {
-    border-radius: 10px;
-    border:1px solid #dfdfdf;
-    width:400px;
+    border-radius: 5px;
+    border:3px solid #0d6efd;
+    box-shadow: 5px 10px #3884f5;
+    width:900px;
     min-height: 200px;
     height: auto;
     margin: 100px auto; 
     padding:50px;
-    background-color: #fff
+    background-color: #fff;
+    text-align: left;
 }
 
-.input{ text-align:center;}
+.input{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+    width: 33.333%;
+    
+}
 
-.input.final{ text-align:center; margin-top:10px;}
+ .input.final{ 
+    text-align: center;
+    width: 100%;
+}
 
 button.btn.btn-primary{
     margin-right: 10px;
+}
+
+.inputbox {
+    height: 30px;
+    width: 250px;
+    margin: 10px;
+    border-radius: 5px;
+    border:1.5px solid #0d6efd;
+}
+
+.error{
+    color:red;
+    font-size: 12px;
+    margin: 12px;
+}
+
+.text{
+    text-decoration: underline;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 12px;
+    font-size: medium;
+    font-weight: bold;
+    color: #0d6efd;
+}
+
+.headerText{
+    font-size: 20px;
+    font-weight: 600;
+    margin: 10px;
+    padding: 10px;
+    position: relative;
+    top: 5px;
+}
+
+.formHeader{
+    display: grid;
+    text-align: center;
+    text-decoration: underline;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #146c43;
 }

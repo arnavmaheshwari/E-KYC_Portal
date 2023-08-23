@@ -19,6 +19,8 @@ export class SearchComponent {
     
     display: string = "";
 
+    alert: string = "success";
+
   fetch() {
     this.searchService.search(this.search).subscribe((data:any)=>{
       if(data.status==200){
@@ -55,7 +57,7 @@ export class SearchComponent {
         this.result.ITGI_UniqueIdentifier=data.resu[0].itgi_unique_identifier;
       }
       else{
-        window.alert("Not A Registered User!")
+        this.alert = "danger";
       }
     })
   }
