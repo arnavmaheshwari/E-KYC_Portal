@@ -5,11 +5,8 @@ import { HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { SearchService } from './search.service';
 import { SearchComponent } from './search/search.component';
 import { CreateComponent } from './create/create.component';
-import { UploadsModule } from '@progress/kendo-angular-upload';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -23,10 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    UploadsModule,
-    BrowserAnimationsModule
   ],
-  providers: [SearchService],
   bootstrap: [AppComponent]
 })
 

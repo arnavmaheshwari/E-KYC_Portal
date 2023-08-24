@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Login } from '../login';
 import { Router } from '@angular/router';
 import { LoginService } from '../login.service';

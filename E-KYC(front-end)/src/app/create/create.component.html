@@ -13,11 +13,64 @@
     </div>
   </nav>
 <form #createForm="ngForm">
+    <div class="result" *ngIf="display=='success'">
+        <div class="subResult">
+        <span style="display: block; text-align: center; font-size: larger; text-decoration: underline; font-weight: bold;">Personal Details</span>
+        <hr />
+        <div><span class="subHeading">Client Type:</span> {{result.clientType}}</div>
+        <div class="show" *ngIf="result.prefix!=null"><span class="subHeading">Prefix:</span> {{result.prefix}}</div>
+        <div class="show" ><span class="subHeading">First Name:</span> {{result.firstName}}</div>
+        <div class="show" *ngIf="result.middleName!=null"><span class="subHeading">Middle Name:</span> {{result.middleName}}</div>
+        <div class="show" *ngIf="result.lastName!=null"><span class="subHeading">Last Name:</span> {{result.lastName}}</div>
+        <div class="show" *ngIf="result.gender!=null"><span class="subHeading">Gender:</span> {{result.gender}}</div>
+        <div class="show"><span class="subHeading">Date of Birth:</span> {{result.dateofBirth}}</div>
+        <div class="show"><span class="subHeading">Mobile Number:</span> {{result.mobileNumber}}</div>
+        <div class="show"><span class="subHeading">Email ID:</span> {{result.emailAddress}}</div>
+    </div>
+    <div class="subResult">
+        <span style="display: block; text-align: center; font-size: larger; text-decoration: underline; font-weight: bold;">Address Details</span>
+        <hr />
+        <div class="show"><span class="subHeading">Address Line 1:</span> {{result.addressLine1}}</div>
+        <div class="show"><span class="subHeading">City:</span> {{result.city}}</div>
+        <div class="show"><span class="subHeading">District:</span> {{result.district}}</div>
+        <div class="show"><span class="subHeading">State:</span> {{result.state}}</div>
+        <div class="show"><span class="subHeading">Country:</span> {{result.country}}</div>
+        <div class="show"><span class="subHeading">Pincode:</span> {{result.pinCode}}</div>
+    </div>
+    <div class="subResult" *ngIf="result.relatedPersonPrefix!=null">
+        <span style="display: block; text-align: center; font-size: larger; text-decoration: underline; font-weight: bold;">Related Person Details</span>
+        <hr/>
+        <div class="show" *ngIf="result.relatedPersonPrefix!=null"><span class="subHeading">Related Person Prefix:</span> {{result.relatedPersonPrefix}}</div>
+        <div class="show" *ngIf="result.relatedPersonFirstName!=null"><span class="subHeading">Related Person First Name:</span> {{result.relatedPersonFirstName}}</div>
+        <div class="show" *ngIf="result.relatedPersonMiddleName!=null"><span class="subHeading">Related Person Middle Name:</span> {{result.relatedPersonMiddleName}}</div>
+        <div class="show" *ngIf="result.relatedPersonLastName!=null"><span class="subHeading">Related Person Last Name:</span> {{result.relatedPersonLastName}}</div>
+        <div class="show" *ngIf="result.relationshipType!=null"><span class="subHeading">Relationship Type:</span> {{result.relationshipType}}</div>
+    </div>
+    <div class="subResult">
+        <span style="display: block; text-align: center; font-size: larger; text-decoration: underline; font-weight: bold;">Corresspondence Address Details</span>
+        <hr />
+        <div class="show"><span class="subHeading">Correspondence Address Line 1:</span> {{result.correspondenceAddressLine1}}</div>
+        <div class="show"><span class="subHeading">Correspondence City:</span> {{result.correspondenceCity}}</div>
+        <div class="show"><span class="subHeading">Correspondence District:</span> {{result.correspondenceDistrict}}</div>
+        <div class="show"><span class="subHeading">Correspondence State:</span> {{result.correspondenceState}}</div>
+        <div class="show"><span class="subHeading">Correspondence Country:</span> {{result.correspondenceCountry}}</div>
+        <div class="show"><span class="subHeading">Correspondence Pin-Code:</span> {{result.correspondencePinCode}}</div>
+    </div>
+    <div class="subResult">
+        <span style="display: block; text-align: center; font-size: larger; text-decoration: underline; font-weight: bold;">ID Details</span>
+        <hr />
+        <div class="show"><span class="subHeading">ID Type:</span> {{result.idType}}</div>
+        <div class="show"><span class="subHeading">ID Name:</span> {{result.idName}}</div>
+        <div class="show"><span class="subHeading">ID Number:</span> {{result.idNumber}}</div>
+        <div class="show"><span class="subHeading">ITGI Unique Reference ID:</span> {{result.ITGI_UniqueIdentifier}}</div>
+    </div>
+</div>
     <div class="alert alert-danger" role="alert" *ngIf="alert=='danger'">
-        Invalid Input!
+        <div style="display: block; text-align: center;">Invalid Input!</div>
       </div>
     <div class="createParent">
-        <span class="formHeader">Create KYC</span>
+        <span class="divhead">Create KYC</span>
+        <div class="inputfields">
         <div class="input">
             <span class="text">Client Type </span>
             <select id="clientType" [(ngModel)]="create.clientType" name="clientType" class="inputbox" #clientType="ngModel" required>
@@ -198,7 +251,7 @@
             <div class="kycDocuments">
                 <span class="text">Identity Proof</span>
                 <div class="kycDocument1">
-                    <span class="text">ID Name</span>
+                    <span class="text" style="font-size: medium;">ID Name</span>
                     <select id="idName" [(ngModel)]="kycDocument1.idName" name="idName1" class="inputbox" #idName1="ngModel" required>
                         <option value="" disabled selected hidden>---ID Name---</option>
                         <option value="PAN">PAN</option>
@@ -208,17 +261,22 @@
                     <small class="error" *ngIf="idName1.touched && idName1.invalid">Select ID Name</small>
                 </div>
                 <div class="kycDocument1">
-                    <span class="text">ID Number</span>
+                    <span class="text" style="font-size: medium;">ID Number</span>
                     <input type="text" [(ngModel)]="kycDocument1.idNumber" placeholder="ID Number" name="idNumber1" class="inputbox" #idNumber1="ngModel" required/>
                     <br />
                     <small class="error" *ngIf="idNumber1.touched && idNumber1.invalid">Enter ID Number</small>
                 </div>
-                <input type="file" (change)="getFileDetails1($event)" class="inputbox" accept=".pdf,.jpg,.jpeg,.tif,.tiff" required>
+                <div class="kycDocument1">
+                    <span class="text" style="font-size: medium;">Upload File</span>
+                    <input type="file" (change)="getFileDetails1($event)" [(ngModel)]="kycDocument1.fileName" #fileName1="ngModel" class="inputfile" name="file1" accept=".pdf,.jpg,.jpeg,.tif,.tiff" required>
+                    <br />
+                    <small class="error" *ngIf="fileName1.touched && fileName1.invalid">Choose A File</small>
+                </div>
             </div>
             <div class="kycDocuments">
                 <span class="text">Address Proof</span>
                 <div class="kycDocument2">
-                    <span class="text">ID Name</span>
+                    <span class="text" style="font-size: medium;">ID Name</span>
                     <select id="idName" [(ngModel)]="kycDocument2.idName" name="idName2" class="inputbox" #idName2="ngModel" required>
                         <option value="" disabled selected hidden>---ID Name---</option>
                         <option value="PASSPORT" *ngIf="create.clientType=='IND'">PASSPORT</option>
@@ -235,17 +293,22 @@
                     <small class="error" *ngIf="idName2.touched && idName2.invalid">Select ID Name</small>
                 </div>
                 <div class="kycDocument2">
-                    <span class="text">ID Number</span>
+                    <span class="text" style="font-size: medium;">ID Number</span>
                     <input type="text" [(ngModel)]="kycDocument2.idNumber" placeholder="ID Number" class="inputbox" name="idNumber2" #idNumber2="ngModel" required/>
                     <br />
                     <small class="error" *ngIf="idNumber2.touched && idNumber2.invalid">Enter ID Number</small>
                 </div>
-                <input type="file" (change)="getFileDetails2($event)" class="inputbox" accept=".pdf,.jpg,.jpeg,.tif,.tiff" required>
+                <div class="kycDocument2">
+                    <span class="text" style="font-size: medium;">Upload File</span>
+                    <input type="file" (change)="getFileDetails2($event)" [(ngModel)]="kycDocument2.fileName" #fileName2="ngModel" class="inputfile" name="file2" accept=".pdf,.jpg,.jpeg,.tif,.tiff" required>
+                    <br />
+                    <small class="error" *ngIf="fileName2.touched && fileName2.invalid">Choose A File</small>
+                </div>
             </div>
             <div class="kycDocuments" *ngIf="create.clientType=='IND'">
                 <span class="text">Others</span>
                 <div class="kycDocument3">
-                    <span class="text">ID Name</span>
+                    <span class="text" style="font-size: medium;">ID Name</span>
                     <select id="idName" [(ngModel)]="kycDocument3.idName" name="idName3" class="inputbox" #idName3="ngModel" required>
                         <option value="" disabled selected hidden>---ID Name---</option>
                         <option value="PHOTO" *ngIf="create.clientType=='IND'">PHOTOGRAPH</option>
@@ -254,54 +317,28 @@
                     <small class="error" *ngIf="idName3.touched && idName3.invalid">Select ID Name</small>
                 </div>
                 <div class="kycDocument3">
-                    <span class="text">ID Number</span>
+                    <span class="text" style="font-size: medium;">ID Number</span>
                     <input type="text" [(ngModel)]="kycDocument3.idNumber" placeholder="ID Number" class="inputbox" name="idNumber3" #idNumber3="ngModel" required/>
                     <br />
                     <small class="error" *ngIf="idNumber3.touched && idNumber3.invalid">Enter ID Number</small>
                 </div>
-                <input type="file" (change)="getFileDetails3($event)" class="inputbox" accept=".pdf,.jpg,.jpeg,.tif,.tiff" required>
+                <div class="kycDocument3">
+                    <span class="text" style="font-size: medium;">Upload File</span>
+                    <input type="file" (change)="getFileDetails3($event)" [(ngModel)]="kycDocument3.fileName" #fileName3="ngModel" class="inputfile" name="file3" accept=".pdf,.jpg,.jpeg,.tif,.tiff" required>
+                    <br />
+                    <small class="error" *ngIf="fileName3.touched && fileName3.invalid">Choose A Filer</small>
+                </div>
             </div>
         </div>  
         <div class="input final">
         <button type="button" class="btn btn-success" (click)="new()" [disabled]="createForm.invalid">Create</button>
         </div>
     </div>
+    </div>
 </form>
-
-<div *ngIf="display=='success'">
-    Record Found!!!
-    Client Type: {{result.clientType}}
-    Prefix: {{result.prefix}}
-    First Name: {{result.firstName}}
-    Middle Name: {{result.middleName}}
-    Last Name: {{result.lastName}}
-    Gender: {{result.gender}}
-    Date of Birth: {{result.dateofBirth}}
-    Related Person Prefix: {{result.relatedPersonPrefix}}
-    Related Person First Name: {{result.relatedPersonFirstName}}
-    Related Person Middle Name: {{result.relatedPersonMiddleName}}
-    Related Person Last Name: {{result.relatedPersonLastName}}
-    Relationship Type: {{result.relationshipType}}
-    Mobile Number: {{result.mobileNumber}}
-    Email ID: {{result.emailAddress}}
-    Address Line 1: {{result.addressLine1}}
-    City: {{result.city}}
-    District: {{result.district}}
-    State: {{result.state}}
-    Country: {{result.country}}
-    Pincode: {{result.pinCode}}
-    Correspondence Address Line 1: {{result.correspondenceAddressLine1}}
-    Correspondence City: {{result.correspondenceCity}}
-    Correspondence District: {{result.correspondenceDistrict}}
-    Correspondence State: {{result.correspondenceState}}
-    Correspondence Country: {{result.correspondenceCountry}}
-    Correspondence Pin-Code: {{result.correspondencePinCode}}
-    ID Type: {{result.idType}}
-    ID Name: {{result.idName}}
-    ID Number: {{result.idNumber}}
-    ITGI Unique Reference ID: {{result.ITGI_UniqueIdentifier}}
+<div class="alert alert-info" role="alert" *ngIf="display=='success'">
+    <div style="display: block; text-align: center;">KYC Record Already Exists!</div>
 </div>
-
-<div *ngIf="display=='created'">
-    Record Created!!!
+<div class="alert alert-success" role="alert" *ngIf="display=='created'">
+    <div style="display: block; text-align: center;">Data Inserted Successfully! ITGI Unique Reference ID Generated: {{itgi_unique_identifier}}</div>
 </div>

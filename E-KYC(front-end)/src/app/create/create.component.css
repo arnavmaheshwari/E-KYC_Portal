@@ -1,14 +1,30 @@
 .createParent {
-    border-radius: 10px;
+    border-radius: 5px;
     border:3px solid #0d6efd;
-    box-shadow: 5px 10px #3884f5;
-    width:1000px;
+    box-shadow:0px 8px 16px 0 rgb(0 0 0/30%);
+    width:900px;
     min-height: 200px;
     height: auto;
     margin: 100px auto; 
-    padding:50px;
     background-color: #fff;
     text-align: left;
+}
+
+.inputfields{
+    padding: 50px;
+}
+
+.divhead{ 
+    background-color: #0d6efd; 
+    color: #ffffff; 
+    font-size: 20px; 
+    font-weight: bold; 
+    padding: 10px; 
+    border-radius: 3px 3px 0px 0px;
+    display: block; 
+    width: 100%; 
+    text-align: center; 
+    text-decoration: underline;
 }
 
 .input{
@@ -16,7 +32,10 @@
     margin-bottom: 10px;
     display: inline-block;
     width: 33.333%;
+    vertical-align: top;
 }
+
+
 
  .input.final{ 
     text-align: center;
@@ -35,33 +54,60 @@
  .kycDocuments{
     display: inline-block;
     width: 33.333%;
+    vertical-align: top;
  }
 
 .inputbox {
-    height: 30px;
+    height: 35px;
     width: 250px;
-    margin: 10px;
+    margin: 10px 10px 0px 0px;
     border-radius: 5px;
+    padding-left: 10px;
     border:1.5px solid #0d6efd;
+    color: #333;
+    opacity: 0.9;
 }
+
+.inputfile {
+    height: 35px;
+    width: 250px;
+    margin: 10px 10px 0px 0px;
+    border-radius: 5px;
+    padding-top: 2.5px;
+    padding-left: 10px;
+    border:1.5px solid #0d6efd;
+    color: #333;
+    opacity: 0.9;
+}
+
+select.inputbox { 
+    color: #333;
+    opacity: 0.9;
+} 
+
+.kycDocuments.select.inputbox { 
+    color: #333;
+    opacity: 0.9;
+} 
 
 .error{
     color:red;
     font-size: 12px;
-    margin: 12px;
+    display: block;
+    text-align: left;
 }
 
 .text{
     text-decoration: underline;
     font-family: 'Times New Roman', Times, serif;
     margin: 12px;
-    font-size: medium;
+    font-size: large;
     font-weight: bold;
     color: #0d6efd;
 }
 
 .headerText{
-    font-size: 20px;
+    font-size: larger;
     font-weight: 600;
     margin: 10px;
     padding: 10px;
@@ -77,4 +123,62 @@
     font-size: 20px;
     font-weight: bold;
     color: #146c43;
+}
+
+
+.btn:disabled {
+    border: #000;
+    background-color: #ccc!important;
+    color: #000;
+}
+
+.result {
+    border-radius: 5px;
+    border:3px solid #146c43;
+    box-shadow:0px 8px 16px 0 rgb(0 0 0/30%);
+    width: 900px;;
+    min-height: 200px;
+    height: auto;
+    margin: 100px auto; 
+    padding: 0px 15px 0px 15px;
+    background-color: #fff;
+    text-align: left;
+    color: #0d6efd;
+    font-size: large;
+    display: block;
+    text-align: center;
+    font-family: serif;
+}
+
+.show {     
+    width: 30%;
+    padding: 10px;
+    display: inline-block;
+    font-size: 15px;
+    margin: 10px;
+    border-radius: 10px;
+    text-align: left;
+    background-color: #f7f7f7;
+    vertical-align: top;
+}
+ 
+.show span { display: block;}
+
+.subResult {
+    border-radius: 5px;
+    border:3px solid #146c43;
+    box-shadow:0px 8px 16px 0 rgb(0 0 0/25%);
+    width: auto;
+    min-height: 200px;
+    height: auto;
+    margin: 100px auto; 
+    padding:25px;
+    background-color: #fff;
+    color: #3884f5;
+}
+
+.subHeading {
+    font-weight: bold;
+    text-decoration: underline;
+    color: #0d6efd;
 }

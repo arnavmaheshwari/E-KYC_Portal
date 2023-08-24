@@ -10,3 +10,5 @@ export const loginGuardGuard: CanActivateFn = (route, state) => {
     return router.parseUrl('');
   }
 };
+
+//ng g guard login-guard: this will create a guard file in the app folder

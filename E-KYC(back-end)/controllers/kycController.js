@@ -42,13 +42,10 @@ const created = async (request, response) => {
         )
         .then((results)=>{
             ID=results[0].id;
-            console.log(ID)
-            console.log(results)
             res = {
                 resu :results,
                 status: 200
             }
-            console.log(results)
             response.status(200).send(res);
         })
         .catch((error)=>{
@@ -67,7 +64,7 @@ const documents = async (request, response) => {
     )
     .then((result)=>{
         db.any(
-            "select distinct client.itgi_unique_identifier from client_kyc as client, kyc_documents as kyc where kyc.client_id=$1",
+            "select distinct client.itgi_unique_identifier from client_kyc as client, kyc_documents as kyc where kyc.client_id=client.id and kyc.client_id=$1",
             [ID]
         )
         .then((results)=>{

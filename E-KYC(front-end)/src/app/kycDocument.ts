@@ -12,7 +12,7 @@ export class kycDocument {
         idNumber: string,
         fileName: string,
         fileExtension: string,
-        fileBase64: any
+        fileBase64: any 
     ) {
         this.idType = idType;
         this.idName = idName;

@@ -9,13 +9,13 @@
   </nav>
 <form #loginForm="ngForm">
     <div class="alert alert-danger" role="alert" *ngIf="alert=='danger'">
-        Invalid Credentials!
-      </div>
+      <div style="display: block; text-align: center;">Invalid Credentials!</div>
+    </div>
     <div class="loginParent">
-      <span class="formHeader">User Sign-In</span>
+      <span class="divhead">User Sign-In</span>
+      <div class="inputfields">
         <div class="input">
         <br />    
-        <!-- <span>User Id </span> -->
         <i class="bi bi-person"></i>
         <input type="email" placeholder="User ID" pattern=".+@iffcotokio\.co\.in" [(ngModel)]="login.userId" name="userId" class="inputbox" required #userId="ngModel" />
         <br />
@@ -23,7 +23,6 @@
         </div>
         <div class="input">
         <br />
-        <!-- <span>Password </span> -->
         <i class="bi bi-lock"></i>
         <input type="password" placeholder="Password" [(ngModel)]="login.password" name="password" class="inputbox" required #password="ngModel" />
         <br />
@@ -32,5 +31,6 @@
         <div class="input final">
         <button type="button" class="btn btn-success" (click)="log()" [disabled]=loginForm.invalid>Login</button>
         </div>
+      </div>
     </div>
 </form>

@@ -1,7 +1,7 @@
+import { Component } from '@angular/core';
 import { SearchService } from './../search.service';
 import { DocumentsService } from './../documents.service';
 import { kycDocument } from './../kycDocument';
-import { Component } from '@angular/core';
 import { Create } from '../create';
 import { Router } from '@angular/router';
 import { CreateService } from '../create.service';
@@ -29,10 +29,9 @@ export class CreateComponent {
     private documentService: DocumentsService,
     private searchService: SearchService){}
 
-  possible: string = "";
-  lengthOfCode: number = 0;
   display: string = "Failure";
   alert: string = "success";
+  itgi_unique_identifier: string = "";
 
   new() {
     this.create.kycDocument.push(this.kycDocument1);
@@ -65,13 +64,13 @@ export class CreateComponent {
         this.result.relationshipType=data.resu[0].relationship_type;
         this.result.mobileNumber=data.resu[0].mobile_number;
         this.result.emailAddress=data.resu[0].email_address;
-        this.result.addressLine1=data.resu[0].address_line_1;
+        this.result.addressLine1=data.resu[0].address_line1;
         this.result.city=data.resu[0].city;
         this.result.district=data.resu[0].district;
         this.result.state=data.resu[0].state;
         this.result.country=data.resu[0].country;
         this.result.pinCode=data.resu[0].pin_code;
-        this.result.correspondenceAddressLine1=data.resu[0].correspondence_address_line_1;
+        this.result.correspondenceAddressLine1=data.resu[0].correspondence_address_line1;
         this.result.correspondenceCity=data.resu[0].correspondence_city;
         this.result.correspondenceDistrict=data.resu[0].correspondence_district;
         this.result.correspondenceState=data.resu[0].correspondence_state;
@@ -88,7 +87,8 @@ export class CreateComponent {
             this.documentService.documents(this.create.kycDocument).subscribe((data:any)=>{
               if(data.status==200){
                 this.display="created"
-                window.alert("Data Inserted Successfully! ITGI Unique Reference ID Generated: "+ data.resu[0].itgi_unique_identifier)
+                this.itgi_unique_identifier=data.resu[0].itgi_unique_identifier;
+                // window.alert("Data Inserted Successfully! ITGI Unique Reference ID Generated: "+ data.resu[0].itgi_unique_identifier)
                 }
             else{
               this.alert = "danger";

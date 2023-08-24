@@ -2,11 +2,8 @@ const express = require("express")
 const cors  = require("cors")
 const bodyparser = require("body-parser")
 require("dotenv").config()
-const pgp = require('pg-promise')()
 const authentication = require("./routes/authentication")
 const kyc = require("./routes/kyc")
-
-const db = pgp('postgres://postgres:postgres@localhost:5432/e_kycdb')
 
 // Initialising Application
 const app = express();  

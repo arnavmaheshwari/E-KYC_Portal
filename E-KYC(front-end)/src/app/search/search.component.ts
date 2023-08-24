@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
 import { Search } from '../search';
+import { Result } from '../result';
 import { Router } from '@angular/router';
 import { SearchService } from '../search.service';
-import { Result } from '../result';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
+
 export class SearchComponent {
 
   search: Search = new Search("","","","","","","","");
@@ -39,13 +40,13 @@ export class SearchComponent {
         this.result.relationshipType=data.resu[0].relationship_type;
         this.result.mobileNumber=data.resu[0].mobile_number;
         this.result.emailAddress=data.resu[0].email_address;
-        this.result.addressLine1=data.resu[0].address_line_1;
+        this.result.addressLine1=data.resu[0].address_line1;
         this.result.city=data.resu[0].city;
         this.result.district=data.resu[0].district;
         this.result.state=data.resu[0].state;
         this.result.country=data.resu[0].country;
         this.result.pinCode=data.resu[0].pin_code;
-        this.result.correspondenceAddressLine1=data.resu[0].correspondence_address_line_1;
+        this.result.correspondenceAddressLine1=data.resu[0].correspondence_address_line1;
         this.result.correspondenceCity=data.resu[0].correspondence_city;
         this.result.correspondenceDistrict=data.resu[0].correspondence_district;
         this.result.correspondenceState=data.resu[0].correspondence_state;
