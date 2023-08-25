@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { SearchService } from './../search.service';
 import { DocumentsService } from './../documents.service';
+import { CreateService } from '../create.service';
 import { kycDocument } from './../kycDocument';
 import { Create } from '../create';
-import { Router } from '@angular/router';
-import { CreateService } from '../create.service';
 import { Result } from '../result';
 import { Search } from '../search';
 
@@ -88,8 +88,7 @@ export class CreateComponent {
               if(data.status==200){
                 this.display="created"
                 this.itgi_unique_identifier=data.resu[0].itgi_unique_identifier;
-                // window.alert("Data Inserted Successfully! ITGI Unique Reference ID Generated: "+ data.resu[0].itgi_unique_identifier)
-                }
+              }
             else{
               this.alert = "danger";
               }
@@ -106,6 +105,7 @@ export class CreateComponent {
   goToSearch() {
     this.router.navigate(['/search']);
   }
+
   Logout() {
     localStorage.setItem("isLoggedIn","False");
     this.router.navigate(['']);
@@ -119,6 +119,7 @@ export class CreateComponent {
       reader.readAsDataURL(file);
       reader.onload = () => {this.kycDocument1.fileBase64 = reader.result;}
   }
+
   getFileDetails2(event:any) {
       this.kycDocument2.fileName = event.target.files[0].name;
       this.kycDocument2.fileExtension = event.target.files[0].type;
@@ -127,6 +128,7 @@ export class CreateComponent {
       reader.readAsDataURL(file);
       reader.onload = () => {this.kycDocument2.fileBase64 = reader.result;}
   }
+  
   getFileDetails3(event:any) {
       this.kycDocument3.fileName = event.target.files[0].name;
       this.kycDocument3.fileExtension = event.target.files[0].type;

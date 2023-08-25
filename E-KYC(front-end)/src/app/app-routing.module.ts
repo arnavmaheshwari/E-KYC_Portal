@@ -7,7 +7,7 @@ import { loginGuardGuard } from './login-guard.guard';
 
 const routes: Routes = [
   { path: '',component: LoginComponent },
-  { path: 'search',component: SearchComponent, canActivate: [loginGuardGuard]},
+  { path: 'search',component: SearchComponent, canActivate: [loginGuardGuard] },
   { path: 'create',component: CreateComponent, canActivate: [loginGuardGuard] }  
 ];
 

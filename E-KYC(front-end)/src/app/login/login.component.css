@@ -9,29 +9,34 @@
     background-color: #fff;
 }
 
-.inputfields{
+.inputfields {
     padding: 10px 40px 30px 40px;
 }
 
-.divhead{ 
+.box {
+    min-height:400px ;
+}
+
+.divhead { 
     background-color: #0d6efd; 
     color: #ffffff; 
     font-size: 20px; 
     font-weight: bold; 
     padding: 10px; 
-    border-radius: 3px 3px 0px 0px;
     display: block; 
     width: 100%; 
     text-align: center; 
     text-decoration: underline;
 }
 
-.input{ text-align:center;}
+.input { text-align:center; }
 
-.input.final{ text-align:center; margin-top:10px;}
+.input.final { text-align:center; margin-top:10px; } 
 
-.input i { font-size: 25px;
-color: #0d6efd;}
+.input i { 
+    font-size: 25px;
+    color: #0d6efd;
+}
 
 .inputbox {
     height: 35px;
@@ -44,14 +49,14 @@ color: #0d6efd;}
     opacity: 0.9;
 }
 
-.error{
+.error {
     color:red;
     font-size: 12px;
     display: block;
     text-align: center;
 }
 
-.headerText{
+.headerText {
     font-size: larger;
     font-weight: 600;
     margin: 10px;
@@ -60,7 +65,7 @@ color: #0d6efd;}
     top: 5px;
 }
 
-.formHeader{
+.formHeader {
     display: grid;
     text-align: center;
     text-decoration: underline;
@@ -75,3 +80,14 @@ color: #0d6efd;}
     background-color: #ccc!important;
     color: #000;
 }
+
+/* media qury is used to make the webiste responsive, We can define the size of the page in different ways, such as  min and max width or range, etcetera/*/
+@media only screen and (min-device-width: 200px) and (max-device-width: 767px) {
+    .loginParent { width:98%; margin: 0 auto;}
+    .input { width: 100%;  display: block;}
+    .navbar.custom .headerText { text-align: center; }
+    .inputbox { width: 100%; }
+    .box { min-height: 600px; padding-top: 100px;}
+}
+
+/* In index.html,  <meta name:"viewport"> tag allows the page to become responsive. We can add different properties like zoom and others in the same tag for different devices.*/

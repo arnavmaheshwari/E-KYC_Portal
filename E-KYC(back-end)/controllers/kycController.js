@@ -2,7 +2,7 @@ const db = require("../dbconnect")
 
 const searched = async (request, response) => {
     db.any(
-        "select * from client_kyc as client, kyc_documents as kyc where client.client_type=$1 and client.first_name=$2 and client.date_of_birth=$3 and kyc.id_name=$4 and kyc.id_number=$5",
+        "select * from client_kyc as client, kyc_documents as kyc where client.client_type=$1 and client.first_name=$2 and client.date_of_birth=$3 and kyc.id_name=$4 and kyc.id_number=$5 and client.id=kyc.client_id",
         [request.body.clientType,request.body.firstName,request.body.dateofBirth,request.body.idType,request.body.idNumber]
     )
     .then((result)=>{
@@ -37,8 +37,8 @@ const created = async (request, response) => {
     )
     .then((result)=>{
         db.any(
-            "select client.id from client_kyc as client where client.client_type=$1 and client.first_name=$2 and client.date_of_birth=$3",
-            [request.body.clientType,request.body.firstName,request.body.dateofBirth]
+            "select client.id from client_kyc as client where client.client_type=$1 and client.first_name=$2 and client.date_of_birth=$3 and client.mobile_number=$4 and client.email_address=$5",
+            [request.body.clientType,request.body.firstName,request.body.dateofBirth,request.body.mobileNumber,request.body.emailAddress]
         )
         .then((results)=>{
             ID=results[0].id;

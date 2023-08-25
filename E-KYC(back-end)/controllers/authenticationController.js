@@ -6,7 +6,6 @@ const logged = async (request, response) => {
         [request.body.userId,request.body.password]
     )
     .then((result)=>{
-        console.log(result)
         response.status(200).send(result)
     })
     .catch((error)=>{

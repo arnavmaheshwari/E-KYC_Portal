@@ -1,4 +1,4 @@
-<nav class="navbar" style="background-color: #3988ffab; margin-bottom: 10px;">
+<nav class="navbar custom" style="background-color: #3988ffab; margin-bottom: 10px;">
     <div class="container-fluid">
         <div class="col-md-6">      
         <a class="navbar-brand" href="https://www.iffcotokio.co.in/">
@@ -13,66 +13,11 @@
     </div>
   </nav>
 <form #searchForm="ngForm">
-    <div class="result" *ngIf="display=='success'">
-            <div class="subResult">
-            <span style="display: block; text-align: center; font-size: larger; text-decoration: underline; font-weight: bold;">Personal Details</span>
-            <hr />
-            <div><span class="subHeading">Client Type:</span> {{result.clientType}}</div>
-            <div class="show" *ngIf="result.prefix!=null"><span class="subHeading">Prefix:</span> {{result.prefix}}</div>
-            <div class="show" ><span class="subHeading">First Name:</span> {{result.firstName}}</div>
-            <div class="show" *ngIf="result.middleName!=null"><span class="subHeading">Middle Name:</span> {{result.middleName}}</div>
-            <div class="show" *ngIf="result.lastName!=null"><span class="subHeading">Last Name:</span> {{result.lastName}}</div>
-            <div class="show" *ngIf="result.gender!=null"><span class="subHeading">Gender:</span> {{result.gender}}</div>
-            <div class="show"><span class="subHeading">Date of Birth:</span> {{result.dateofBirth}}</div>
-            <div class="show"><span class="subHeading">Mobile Number:</span> {{result.mobileNumber}}</div>
-            <div class="show"><span class="subHeading">Email ID:</span> {{result.emailAddress}}</div>
-        </div>
-        <div class="subResult">
-            <span style="display: block; text-align: center; font-size: larger; text-decoration: underline; font-weight: bold;">Address Details</span>
-            <hr />
-            <div class="show"><span class="subHeading">Address Line 1:</span> {{result.addressLine1}}</div>
-            <div class="show"><span class="subHeading">City:</span> {{result.city}}</div>
-            <div class="show"><span class="subHeading">District:</span> {{result.district}}</div>
-            <div class="show"><span class="subHeading">State:</span> {{result.state}}</div>
-            <div class="show"><span class="subHeading">Country:</span> {{result.country}}</div>
-            <div class="show"><span class="subHeading">Pincode:</span> {{result.pinCode}}</div>
-        </div>
-        <div class="subResult" *ngIf="result.relatedPersonPrefix!=null">
-            <span style="display: block; text-align: center; font-size: larger; text-decoration: underline; font-weight: bold;">Related Person Details</span>
-            <hr/>
-            <div class="show" *ngIf="result.relatedPersonPrefix!=null"><span class="subHeading">Related Person Prefix:</span> {{result.relatedPersonPrefix}}</div>
-            <div class="show" *ngIf="result.relatedPersonFirstName!=null"><span class="subHeading">Related Person First Name:</span> {{result.relatedPersonFirstName}}</div>
-            <div class="show" *ngIf="result.relatedPersonMiddleName!=null"><span class="subHeading">Related Person Middle Name:</span> {{result.relatedPersonMiddleName}}</div>
-            <div class="show" *ngIf="result.relatedPersonLastName!=null"><span class="subHeading">Related Person Last Name:</span> {{result.relatedPersonLastName}}</div>
-            <div class="show" *ngIf="result.relationshipType!=null"><span class="subHeading">Relationship Type:</span> {{result.relationshipType}}</div>
-        </div>
-        <div class="subResult">
-            <span style="display: block; text-align: center; font-size: larger; text-decoration: underline; font-weight: bold;">Corresspondence Address Details</span>
-            <hr />
-            <div class="show"><span class="subHeading">Correspondence Address Line 1:</span> {{result.correspondenceAddressLine1}}</div>
-            <div class="show"><span class="subHeading">Correspondence City:</span> {{result.correspondenceCity}}</div>
-            <div class="show"><span class="subHeading">Correspondence District:</span> {{result.correspondenceDistrict}}</div>
-            <div class="show"><span class="subHeading">Correspondence State:</span> {{result.correspondenceState}}</div>
-            <div class="show"><span class="subHeading">Correspondence Country:</span> {{result.correspondenceCountry}}</div>
-            <div class="show"><span class="subHeading">Correspondence Pin-Code:</span> {{result.correspondencePinCode}}</div>
-        </div>
-        <div class="subResult">
-            <span style="display: block; text-align: center; font-size: larger; text-decoration: underline; font-weight: bold;">ID Details</span>
-            <hr />
-            <div class="show"><span class="subHeading">ID Type:</span> {{result.idType}}</div>
-            <div class="show"><span class="subHeading">ID Name:</span> {{result.idName}}</div>
-            <div class="show"><span class="subHeading">ID Number:</span> {{result.idNumber}}</div>
-            <div class="show"><span class="subHeading">ITGI Unique Reference ID:</span> {{result.ITGI_UniqueIdentifier}}</div>
-        </div>
-    </div>
-    <div class="alert alert-danger" role="alert" *ngIf="alert=='danger'" style="text-align: center;">
-        KYC Record Does Not Exist!
-      </div>
     <div class="searchParent">
         <span class="divhead">Search KYC</span>
         <div class="inputfields">
         <div class="input">
-            <span class="text">Client Type </span>
+            <span class="text">Client Type</span>
             <select id="clientType" [(ngModel)]="search.clientType" name="clientType" class="inputbox" required #clientType="ngModel">
                 <option value="" disabled selected hidden>---Client Type---</option>
                 <option value="IND">Indivdual</option>
@@ -82,25 +27,25 @@
             <small class="error" *ngIf="clientType.touched && clientType.invalid">Select A Client Type</small>
         </div>
         <div class="input">
-            <span class="text">First Name </span>
+            <span class="text">First Name</span>
             <input type="text" placeholder="First Name" [(ngModel)]="search.firstName" minlength="2" class="inputbox" name="firstName" required #firstName="ngModel"/>
             <br />
             <small class="error" *ngIf="firstName.touched && firstName.invalid">Invalid First Name</small>
         </div>
         <div class="input" *ngIf="search.clientType == 'IND'">
-            <span class="text">Middle Name </span>
+            <span class="text">Middle Name</span>
             <input  type="text" placeholder="Middle Name" [(ngModel)]="search.middleName" minlength="1" class="inputbox" name="middleName" #middleName="ngModel"/>
             <br />
             <small class="error" *ngIf="middleName.invalid">Invalid Middle Name</small>
         </div>
         <div class="input" *ngIf="search.clientType == 'IND'">
-            <span class="text">Last Name </span>
+            <span class="text">Last Name</span>
             <input type="text" [(ngModel)]="search.lastName" placeholder="Last Name" minlength="2" class="inputbox" name="lastName" required #lastName="ngModel"/>
             <br />
             <small class="error" *ngIf="lastName.touched && lastName.invalid">Invalid Last Name</small>
         </div>
         <div class="input" *ngIf="search.clientType == 'IND'">
-            <span class="text">Gender </span>
+            <span class="text">Gender</span>
             <select id="gender"[(ngModel)]="search.gender" name="gender" required class="inputbox" #gender="ngModel">
                 <option value="" disabled selected hidden>---Gender---</option>
                 <option value="M">Male</option>
@@ -111,13 +56,13 @@
             <small class="error" *ngIf="gender.touched && gender.invalid">Select Gender</small>
         </div>
         <div class="input">
-            <span class="text">DOB </span>
+            <span class="text">Date Of Birth</span>
             <input type="date" [(ngModel)]="search.dateofBirth" placeholder="Date Of Birth" class="inputbox" name="dateofBirth" max="2004-12-31" step="1" required #dateofBirth="ngModel"/>
             <br />
             <small class="error" *ngIf="dateofBirth.touched && dateofBirth.invalid">Select A Date Before 31/312/2004</small>
         </div>
         <div class="input">
-            <span class="text">ID Type </span>
+            <span class="text">ID Type</span>
             <select id="idType" [(ngModel)]="search.idType" name="idType" required class="inputbox" #idType="ngModel">
                 <option value="" disabled selected hidden>---ID Type---</option>
                 <option value="ITGI">ITGI UNIQUE IDENTIFIER</option>
@@ -137,17 +82,72 @@
             <small class="error" *ngIf="idType.touched && idType.invalid">Select An ID Type</small>
         </div>
         <div class="input">
-            <span class="text">ID Number </span>
+            <span class="text">ID Number</span>
             <input type="text" [(ngModel)]="search.idNumber" placeholder="ID Number" name="idNumber" class="inputbox" required #idNumber="ngModel" maxlength="20"/>
             <br />
             <small class="error" *ngIf="idNumber.touched && idNumber.invalid">Invalid ID Number</small>
         </div>
         <div class="input final">
-        <button type="button" class="btn btn-success" (click)="fetch()" [disabled]=searchForm.invalid>Find/Search</button>
+            <button type="button" class="btn btn-success" (click)="fetch()" [disabled]=searchForm.invalid>Find/Search</button>
         </div>
     </div>
+    <div *ngIf="display=='success'" class="alert alert-success" style="margin-left: 10px; margin-right: 10px; text-align: center;"  role="alert">
+        Record Found!
     </div>
-    </form>
-<div *ngIf="display=='success'" class="alert alert-success" style="text-align: center;" role="alert">
-    Record Found!
+    <div class="alert alert-danger" role="alert" style="margin-left: 10px; margin-right: 10px; text-align: center;" *ngIf="alert=='danger'">
+        KYC Record Does Not Exist!
+      </div>
     </div>
+</form>
+<div class="result" *ngIf="display=='success'">
+    <div class="subResult">
+    <span style="display: block; text-align: center; font-size: larger; text-decoration: underline; font-weight: bold;">Personal Details</span>
+    <hr />
+    <div class="show"><span class="subHeading">Client Type:</span> {{result.clientType}}</div>
+    <div class="show" *ngIf="result.clientType=='IND'"><span class="subHeading">Prefix:</span> {{result.prefix}}</div>
+    <div class="show" ><span class="subHeading">First Name:</span> {{result.firstName}}</div>
+    <div class="show" *ngIf="result.clientType=='IND'"><span class="subHeading">Middle Name:</span> {{result.middleName}}</div>
+    <div class="show" *ngIf="result.clientType=='IND'"><span class="subHeading">Last Name:</span> {{result.lastName}}</div>
+    <div class="show" *ngIf="result.clientType=='IND'"><span class="subHeading">Gender:</span> {{result.gender}}</div>
+    <div class="show"><span class="subHeading">Date of Birth:</span> {{result.dateofBirth}}</div>
+    <div class="show"><span class="subHeading">Mobile Number:</span> {{result.mobileNumber}}</div>
+    <div class="show"><span class="subHeading">Email ID:</span> {{result.emailAddress}}</div>
+</div>
+<div class="subResult">
+    <span style="display: block; text-align: center; font-size: larger; text-decoration: underline; font-weight: bold;">Address Details</span>
+    <hr />
+    <div class="show"><span class="subHeading">Address Line 1:</span> {{result.addressLine1}}</div>
+    <div class="show"><span class="subHeading">City:</span> {{result.city}}</div>
+    <div class="show"><span class="subHeading">District:</span> {{result.district}}</div>
+    <div class="show"><span class="subHeading">State:</span> {{result.state}}</div>
+    <div class="show"><span class="subHeading">Country:</span> {{result.country}}</div>
+    <div class="show"><span class="subHeading">Pincode:</span> {{result.pinCode}}</div>
+</div>
+<div class="subResult" *ngIf="result.clientType=='IND'">
+    <span style="display: block; text-align: center; font-size: larger; text-decoration: underline; font-weight: bold;">Related Person Details</span>
+    <hr/>
+    <div class="show"><span class="subHeading">Related Person Prefix:</span> {{result.relatedPersonPrefix}}</div>
+    <div class="show"><span class="subHeading">Related Person First Name:</span> {{result.relatedPersonFirstName}}</div>
+    <div class="show"><span class="subHeading">Related Person Middle Name:</span> {{result.relatedPersonMiddleName}}</div>
+    <div class="show"><span class="subHeading">Related Person Last Name:</span> {{result.relatedPersonLastName}}</div>
+    <div class="show" ><span class="subHeading">Relationship Type:</span> {{result.relationshipType}}</div>
+</div>
+<div class="subResult">
+    <span style="display: block; text-align: center; font-size: larger; text-decoration: underline; font-weight: bold;">Corresspondence Address Details</span>
+    <hr />
+    <div class="show"><span class="subHeading">Correspondence Address Line 1:</span> {{result.correspondenceAddressLine1}}</div>
+    <div class="show"><span class="subHeading">Correspondence City:</span> {{result.correspondenceCity}}</div>
+    <div class="show"><span class="subHeading">Correspondence District:</span> {{result.correspondenceDistrict}}</div>
+    <div class="show"><span class="subHeading">Correspondence State:</span> {{result.correspondenceState}}</div>
+    <div class="show"><span class="subHeading">Correspondence Country:</span> {{result.correspondenceCountry}}</div>
+    <div class="show"><span class="subHeading">Correspondence Pin-Code:</span> {{result.correspondencePinCode}}</div>
+</div>
+<div class="subResult">
+    <span style="display: block; text-align: center; font-size: larger; text-decoration: underline; font-weight: bold;">ID Details</span>
+    <hr />
+    <div class="show"><span class="subHeading">ID Type:</span> {{result.idType}}</div>
+    <div class="show"><span class="subHeading">ID Name:</span> {{result.idName}}</div>
+    <div class="show"><span class="subHeading">ID Number:</span> {{result.idNumber}}</div>
+    <div class="show"><span class="subHeading">ITGI Unique Reference ID:</span> {{result.ITGI_UniqueIdentifier}}</div>
+</div>
+</div>

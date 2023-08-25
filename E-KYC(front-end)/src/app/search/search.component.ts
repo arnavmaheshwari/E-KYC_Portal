@@ -19,7 +19,6 @@ export class SearchComponent {
     private searchService: SearchService){}
     
     display: string = "";
-
     alert: string = "success";
 
   fetch() {
@@ -66,6 +65,7 @@ export class SearchComponent {
   goToCreate() {
     this.router.navigate(['/create']);
   }
+  
   Logout() {
     localStorage.setItem("isLoggedIn","False");
     this.router.navigate(['']);

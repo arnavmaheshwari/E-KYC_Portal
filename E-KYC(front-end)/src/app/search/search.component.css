@@ -10,24 +10,23 @@
     text-align: left;
 }
 
-.inputfields{
+.inputfields {
     padding: 50px;
 }
 
-.divhead{ 
+.divhead { 
     background-color: #0d6efd; 
     color: #ffffff; 
     font-size: 20px; 
     font-weight: bold; 
     padding: 10px; 
-    border-radius: 3px 3px 0px 0px;
     display: block; 
     width: 100%; 
     text-align: center; 
     text-decoration: underline;
 }
 
-.input{
+.input {
     margin-top: 10px;
     margin-bottom: 10px;
     display: inline-block;  
@@ -36,12 +35,12 @@
     
 }
 
- .input.final{ 
+ .input.final { 
     text-align: center;
     width: 100%;
 }
 
-button.btn.btn-primary{
+button.btn.btn-primary {
     margin-right: 10px;
 }
 
@@ -56,14 +55,14 @@ button.btn.btn-primary{
     opacity: 0.9;
 }
 
-.error{
+.error {
     color:red;
     font-size: 12px;
     display: block;
     text-align: left;
 }
 
-.text{
+.text {
     text-decoration: underline;
     font-family: 'Times New Roman', Times, serif;
     margin: 12px;
@@ -72,7 +71,7 @@ button.btn.btn-primary{
     color: #0d6efd;
 }
 
-.headerText{
+.headerText {
     font-size: larger;
     font-weight: 600;
     margin: 10px;
@@ -81,7 +80,7 @@ button.btn.btn-primary{
     top: 5px;
 }
 
-.formHeader{
+.formHeader {
     display: grid;
     text-align: center;
     text-decoration: underline;
@@ -101,7 +100,7 @@ button.btn.btn-primary{
     border-radius: 5px;
     border:3px solid #146c43;
     box-shadow:0px 8px 16px 0 rgb(0 0 0/30%);
-    width: 900px;;
+    width: 900px;
     min-height: 200px;
     height: auto;
     margin: 100px auto; 
@@ -127,7 +126,7 @@ button.btn.btn-primary{
     vertical-align: top;
 }
  
-.show span { display: block;}
+.show span { display: block; }
 
 .subResult {
     border-radius: 5px;
@@ -146,4 +145,13 @@ button.btn.btn-primary{
     font-weight: bold;
     text-decoration: underline;
     color: #0d6efd;
+}
+
+
+@media only screen and (min-device-width: 200px) and (max-device-width: 767px) {
+.searchParent { width:98%; margin: 0 auto;}
+.input { width: 100%;  display: block;}
+.navbar.custom .btn.btn-primary { margin-left: 177.16px; }
+.navbar.custom .headerText { text-align: center; }
+.inputbox { width: 100%; }
 }
